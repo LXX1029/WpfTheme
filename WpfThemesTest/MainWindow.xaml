@@ -1,0 +1,199 @@
+﻿<Window x:Class="WpfThemesTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfThemesTest"
+         xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+         xmlns:WpfThemes="clr-namespace:WpfThemes;assembly=WpfThemes"
+        xmlns:WpfThemesControls="clr-namespace:WpfThemes.Controls;assembly=WpfThemes"
+        mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None"
+        Title="皮肤窗口" Height="800" Width="800" WindowState="Maximized"
+        x:Name="mainWindow" Style="{DynamicResource AccentMainWindow}">
+    <Window.Resources>
+        <SolidColorBrush x:Key="AccentColorBrush" Color="#007ACC" />
+        <XmlDataProvider x:Key="InventoryData" XPath="Supermarket">
+            <x:XData>
+                <Supermarket xmlns="" Name="Supermarket">
+                    <Fruits Name="Fruits">
+                        <Fruit Name="Peach"/>
+                        <Fruit Name="Banana"/>
+                        <Fruit Name="Orange"/>
+                    </Fruits>
+                    <Drinks Name="Drinks">
+                        <Drink Name="Coca Cola"/>
+                    </Drinks>
+                </Supermarket>
+            </x:XData>
+        </XmlDataProvider>
+        <HierarchicalDataTemplate x:Key="xmltemplate" ItemsSource="{Binding}">
+            <TextBlock Text="{Binding XPath=@Name}"></TextBlock>
+        </HierarchicalDataTemplate>
+
+
+
+    </Window.Resources>
+    <!--<Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="LayoutTransform.(ScaleTransform.ScaleX)" Storyboard.TargetName="mainGrid">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.2"></EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.5"></EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.05"></EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"></EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="LayoutTransform.(ScaleTransform.ScaleY)"  Storyboard.TargetName="mainGrid">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.2"></EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.3"  Value="0.5"></EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.05"></EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"></EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>-->
+
+
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--<Grid.LayoutTransform>
+            <ScaleTransform  ScaleX="0" ScaleY="0"></ScaleTransform>
+        </Grid.LayoutTransform>-->
+        <WrapPanel>
+            <WpfThemes:SkinSettingControl x:Name="ssc" Visibility="Collapsed"></WpfThemes:SkinSettingControl>
+        </WrapPanel>
+
+        <TabControl Grid.Row="1" Margin="10">
+            <TabItem Header="Colors">
+                <WrapPanel>
+                    <WpfThemesControls:DzpGroupBox Header="Accent.DarkColor">
+                        <Rectangle Width="100" Height="100" Fill="{DynamicResource Accent.DarkColor}"></Rectangle>
+                    </WpfThemesControls:DzpGroupBox>
+                    <WpfThemesControls:DzpGroupBox Header="Accent.LightColor">
+                        <Rectangle Width="100" Height="100" Fill="{DynamicResource Accent.LightColor}"></Rectangle>
+                    </WpfThemesControls:DzpGroupBox>
+                    <WpfThemesControls:DzpGroupBox Header="Accent.DarkBrush">
+                        <Rectangle Width="100" Height="100" Fill="{DynamicResource Accent.DarkBrush}"></Rectangle>
+                    </WpfThemesControls:DzpGroupBox>
+                    <WpfThemesControls:DzpGroupBox Header="Accent.LightBrush">
+                        <Rectangle Width="100" Height="100" Fill="{DynamicResource Accent.LightBrush}"></Rectangle>
+                    </WpfThemesControls:DzpGroupBox>
+                </WrapPanel>
+            </TabItem>
+            <TabItem Header="EditorControl">
+                <WrapPanel  Orientation="Vertical">
+                    <ComboBox IsEditable="False" Width="120" HorizontalAlignment="Left" Height="30">
+                        <ComboBoxItem>Item1</ComboBoxItem>
+                        <ComboBoxItem>Item2</ComboBoxItem>
+                        <ComboBoxItem>Item3</ComboBoxItem>
+                        <ComboBoxItem>Item4</ComboBoxItem>
+                    </ComboBox>
+                    <WpfThemesControls:DzpComboBox LabName="xxxx" Height="30">
+                        <ComboBoxItem>AAAAAAA</ComboBoxItem>
+                        <ComboBoxItem>BAAAAAA</ComboBoxItem>
+                    </WpfThemesControls:DzpComboBox>
+                    <DatePicker  x:Name="DPBirthday" Style="{DynamicResource AccentDatePicker}" Text="{Binding Path=Birthday,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" Margin="0,0,0,10" HorizontalAlignment="Left" SelectedDateFormat="Short" />
+
+                    <Button Content="测试数据"></Button>
+                    <WpfThemesControls:ImageContentButton  Height="60" ImageSorce="pack://application:,,,/WpfThemesTest;component/Images/DZPBaseWindow.png" Content="ABC"></WpfThemesControls:ImageContentButton>
+                    <TextBox ></TextBox>
+                    <PasswordBox></PasswordBox>
+                    <CheckBox Content="checkBox" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100"></CheckBox>
+                    <RadioButton Content="RadioButton"></RadioButton>
+                    <TextBlock Text="ABCD"></TextBlock>
+                </WrapPanel>
+            </TabItem>
+            <TabItem Header="DataGrid">
+                <DataGrid x:Name="dg" ItemsSource="{Binding ColorList,Mode=TwoWay}" SelectionUnit="FullRow"  Height="300"  AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="0.2*">
+                            <DataGridTemplateColumn.Header>
+                                <CheckBox Content="序号"></CheckBox>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Margin="12,0,0,0" HorizontalAlignment="Center" Content="{Binding DataContext.Id,RelativeSource={RelativeSource AncestorType=DataGridRow}}" IsChecked="{Binding DataContext.IsChecked,RelativeSource={RelativeSource AncestorType=DataGridRow}}" IsThreeState="False"   ></CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Name" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ColorName}"></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                    <!--<DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridRow}">
+                           
+                        </Style>
+                    </DataGrid.Resources>-->
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="TreeView">
+                <TreeView ItemsSource="{Binding Source={StaticResource InventoryData}}" 
+                          ItemTemplate="{StaticResource xmltemplate}">
+                </TreeView>
+            </TabItem>
+            <TabItem Header="ListBox">
+                <ListBox Height="100" Margin="10" Width="500" AlternationCount="2" >
+                    <ListBoxItem>A</ListBoxItem>
+                    <ListBoxItem>B</ListBoxItem>
+                    <ListBoxItem>C</ListBoxItem>
+                    <ListBoxItem>D</ListBoxItem>
+                    <ListBoxItem>B</ListBoxItem>
+                    <ListBoxItem>C</ListBoxItem>
+                    <ListBoxItem>D</ListBoxItem>
+                </ListBox>
+            </TabItem>
+            <TabItem Header="GroupBox">
+                <WrapPanel ItemHeight="200" ItemWidth="450">
+                    <WpfThemesControls:DzpGroupBox Header="字体大小20" FontSize="20"  HorizontalContentAlignment="Center" Width="200" Height="150">
+
+                        <WpfThemesControls:DzpGroupBox  FontSize="14"  HorizontalContentAlignment="Center" Width="140"  Height="80">
+                            <GroupBox.Header>
+                                <Button Content="Button"></Button>
+                            </GroupBox.Header>
+                        </WpfThemesControls:DzpGroupBox>
+                    </WpfThemesControls:DzpGroupBox>
+                </WrapPanel>
+            </TabItem>
+            <TabItem Header="Expander">
+                <Expander Header="Expander3333333333333333333">
+                    <StackPanel>
+                        <TextBlock Text="value1"></TextBlock>
+                        <TextBlock Text="value2"></TextBlock>
+                        <TextBlock Text="value3"></TextBlock>
+                        <TextBlock Text="value4"></TextBlock>
+                    </StackPanel>
+                </Expander>
+            </TabItem>
+            <TabItem Header="Slider">
+                <Slider Width="300" Style="{DynamicResource Slider.LongDiameterStyle}"></Slider>
+            </TabItem>
+            <TabItem Header="Other">
+                <StackPanel>
+                    <Rectangle Height="30" Style="{DynamicResource AccentRectangleVertical1}"></Rectangle>
+                    <Path Style="{DynamicResource AccentPath79}"></Path>
+                    <WpfThemesControls:TextBoxUnderLine LabName="A" MaxLength="5" Margin="5"></WpfThemesControls:TextBoxUnderLine>
+                    <WpfThemesControls:DzpTextBox LabName="用户名:" ContentWidth="250" Height="30"></WpfThemesControls:DzpTextBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Test">
+                <WrapPanel>
+                    <Button x:Name="btnPopup" Content="弹出框测试"></Button>
+                    <Button x:Name="btnShowPb" Content="显示进度窗口" Click="btnShowPb_Click"></Button>
+
+                </WrapPanel>
+
+            </TabItem>
+        </TabControl>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WpfThemes;component/OfficeThemeStyles/Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="BaseRectangle" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Accent.DarkColor}"/>
+    </Style>
+
+    <Style TargetType="{x:Type Rectangle}" BasedOn="{StaticResource BaseRectangle}">
+       
+    </Style>
+
+    <Style x:Key="AccentRectangle" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Accent.DarkColor}"/>
+        <Setter Property="Width" Value="2"></Setter>
+    </Style>
+    <!--通用线 高度为1-->
+    <Style x:Key="AccentRectangle1" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Accent.DarkBrush}"/>
+        <Setter Property="Height" Value="1"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+    </Style>
+
+    <!--垂直线 高度：2-->
+    <Style x:Key="AccentRectangleVertical1" TargetType="{x:Type Rectangle}">
+        <Setter Property="Stroke" Value="{StaticResource Accent.DarkBrush}"/>
+        <Setter Property="Fill" Value="{StaticResource Accent.DarkBrush}"/>
+        <Setter Property="StrokeThickness" Value="2"></Setter>
+        <Setter Property="Width" Value="2"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+        <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+    </Style>
+    <!--水平线 宽度：2-->
+    <Style x:Key="AccentRectangleHorizontal1" TargetType="{x:Type Rectangle}">
+        <Setter Property="Stroke" Value="{StaticResource Accent.DarkBrush}"/>
+        <Setter Property="Fill" Value="{StaticResource Accent.DarkBrush}"/>
+        <!--<Setter Property="Height" Value="2"></Setter>-->
+        <Setter Property="Width" Value="2"></Setter>
+        <Setter Property="StrokeThickness" Value="2"></Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+    </Style>
+
+    <Style x:Key="AccentCoverRectangle" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Accent.DarkBrush}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+        <Setter Property="Panel.ZIndex" Value="0"></Setter>
+        <Setter Property="Opacity" Value="0"></Setter>
+    </Style>
+
+</ResourceDictionary>

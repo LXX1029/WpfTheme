@@ -1,0 +1,78 @@
+﻿<Window x:Class="WpfThemes.MsgBox.MessageBoxInfoForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MessageBoxInfoForm" AllowsTransparency="True"  Background="Transparent"
+        Height="245" Width="370" WindowStyle="None" WindowStartupLocation="Manual">
+    <Window.Resources>
+        <Storyboard x:Key="sbLoadedStretch">
+            <DoubleAnimationUsingKeyFrames AccelerationRatio="1" Storyboard.TargetProperty="(FrameworkElement.Width)"  Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="150"></EasingDoubleKeyFrame>
+                <!--<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="250"></EasingDoubleKeyFrame>-->
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="370"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames  AccelerationRatio="1" Storyboard.TargetProperty="(FrameworkElement.Height)"  Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="100"></EasingDoubleKeyFrame>
+                <!--<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="200"></EasingDoubleKeyFrame>-->
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="245"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity"  Storyboard.TargetName="rect">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.3"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+        
+        <Storyboard x:Key="sbLoadedScale">
+            <DoubleAnimationUsingKeyFrames  Storyboard.TargetProperty="LayoutTransform.(ScaleTransform.ScaleX)"  Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.9"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.05"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.45" Value="1"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="LayoutTransform.(ScaleTransform.ScaleY)"  Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.9"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.05"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.45" Value="1"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity"  Storyboard.TargetName="rect">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.3"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+    </Window.Resources>
+    <Canvas x:Name="canvas">
+        <Rectangle x:Name="rect" Width="{Binding ActualWidth,ElementName=canvas}" RadiusX="5" RadiusY="5"  
+                   Height="{Binding ActualHeight,ElementName=canvas}" Style="{DynamicResource AccentCoverRectangle}"></Rectangle>
+        <Border x:Name="border" Panel.ZIndex="1" RenderTransformOrigin="0.5,0.5">
+            <Border.LayoutTransform>
+                <ScaleTransform></ScaleTransform>
+            </Border.LayoutTransform>
+            <GroupBox x:Name="groupbox"  Header="提示信息"
+                  Style="{DynamicResource AccentMessageBoxGroupBox}"
+                  Tag="0,0 0,245 360,245 360,245 370,235 370,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="0.4*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal"  Margin="30,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="Transparent">
+                        <Image x:Name="Img"   Width="64" Height="64"></Image>
+                        <TextBox x:Name="InforLabel" Margin="5,5,0,0" Text="确定要删除吗？" FontSize="15" ToolTip="{Binding Text,RelativeSource={RelativeSource Self}}" HorizontalAlignment="Left" VerticalAlignment="Center" Focusable="False" 
+                  Width="250" Height="60" VerticalContentAlignment="Center" BorderThickness="0" MaxLines="2" ContextMenu="{x:Null}" Background="Transparent" TextWrapping="Wrap" Style="{DynamicResource AccentTextBoxMsg}">
+                        </TextBox>
+                    </StackPanel>
+                    <WrapPanel Grid.Row="1" Margin="0,0,30,20" FlowDirection="RightToLeft" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+                        <Button x:Name="CancelButton" Margin="0,0,15,0" Content="取 消" Style="{DynamicResource AccentButton}"  Padding="18,8" PreviewMouseLeftButtonDown="CancelButton_PreviewMouseLeftButtonDown" ></Button>
+                        <Button x:Name="OkButton" Content="确 定" Style="{DynamicResource AccentButton}" Padding="18,8" PreviewMouseLeftButtonDown="OkButton_PreviewMouseLeftButtonDown"></Button>
+                    </WrapPanel>
+                </Grid>
+            </GroupBox>
+        </Border>
+    </Canvas>
+</Window>

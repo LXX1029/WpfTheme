@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="WpfThemes.UserControls.ToolBarMinMaxClose"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:uc="clr-namespace:WpfThemes.UserControls"
+             xmlns:local="clr-namespace:WpfThemes"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="150">
+    <Grid>
+        <WrapPanel VerticalAlignment="Center">
+            <local:SkinSettingControl Visibility="{Binding DataContext.SetSkinVisibility,RelativeSource={RelativeSource AncestorType=UserControl}}"></local:SkinSettingControl>
+            <Button x:Name="btnMin" Content="最小化" Click="btnMin_Click" Tag="1" Style="{DynamicResource AccentButtonMin}" HorizontalAlignment="Right"></Button>
+            <ToggleButton x:Name="tbtnMax" Content="最大化" Click="btnMin_Click" Tag="2" Style="{DynamicResource AccentToggleButtonMax}" HorizontalAlignment="Right"></ToggleButton>
+            <Button x:Name="btnClose" Content="关闭" Click="btnMin_Click" Tag="3" Style="{DynamicResource AccentButtonClose}" HorizontalAlignment="Right"></Button>
+        </WrapPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,14 @@
+﻿  <!--#region Button SolidColorBrush-->
+    <SolidColorBrush x:Key="Button.Static.ForegroundColor" Color="{StaticResource Static.ForegroundColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="Button.Static.Background" Color="{DynamicResource  Static.BackgroundColor}"/>
+    <SolidColorBrush x:Key="Button.Static.BorderBrush" Color="{DynamicResource Static.BorderBrush}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="{DynamicResource MouseOver.BackgroundColor}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.BorderBrush" Color="{DynamicResource MouseOver.BorderBrush}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.ForegroundColor" Color="{DynamicResource MouseOver.ForegroundColor}"/>
+    <SolidColorBrush x:Key="Button.Pressed.Background" Color="{DynamicResource Pressed.BackgroundColor}"/>
+    <SolidColorBrush x:Key="Button.Pressed.BorderBrush" Color="{DynamicResource Pressed.BorderBrush}"/>
+    <SolidColorBrush x:Key="Button.Pressed.ForegroundColor" Color="{DynamicResource Pressed.ForegroundColorColor}"/>
+    <SolidColorBrush x:Key="Button.Disabled.Background" Color="{StaticResource Disabled.BackgroundColor}"/>
+    <SolidColorBrush x:Key="Button.Disabled.BorderBrush" Color="{StaticResource Disabled.BorderColor}"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="{StaticResource Disabled.ForegroundColor}"/>
+    <!--#endregion-->

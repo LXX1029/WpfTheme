@@ -1,0 +1,16 @@
+﻿1：引用WpfThemes Dll
+2：在引用成的app.xaml.cs 中重写OnStartup方法，类似：
+   protected override void OnStartup(StartupEventArgs e)
+        {
+            // 调用设置皮肤方法
+            SkinSettingControl.SetSkin();
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            base.OnStartup(e);
+        }
+3：在主窗口中引用主窗口样式
+	a.设置主窗口属性：AllowsTransparency="True" WindowStyle="None"
+	b.Style="{DynamicResource AccentMainWindow}"
+4:在其它窗口引用窗口样式，类似：
+	a.设置窗口属性：AllowsTransparency="True" WindowStyle="None"
+	b.Style="{DynamicResource AccentWindow}"
